@@ -1,0 +1,11 @@
+apply url: 'http://github.com/hansd/artifactoryplugin/raw/master/src/sourceRepo/artifactoryplugin-0.1.gradle'
+apply id: 'java'
+
+dependencies {
+  testCompile "junit:junit:4.7"
+}
+
+task show << {
+  println configurations.testCompile.files
+}
+
