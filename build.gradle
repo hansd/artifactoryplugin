@@ -1,0 +1,28 @@
+apply id: 'groovy'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  groovy "org.codehaus.groovy:groovy-all:1.7.0"
+  compile files(BootstrapUtil.gradleClasspath)
+}
+
+jar {
+  metaInf {
+    from "$buildDir/gradle-plugins.properties"                                                
+  }  
+  doFirst {
+    Properties props = new Properties()
+    props['org.gradle.artifactoryplugin'] = 'org.gradle.artifactoryplugin.ArtifactoryPlugin'
+    props.store(new FileOutputStream("$buildDir/gradle-plugins.properties"), "")
+  }
+}
+
+
+
+
+
+
+

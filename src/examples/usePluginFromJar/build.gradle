@@ -1,0 +1,23 @@
+// In an enterprise context this build script section could be part of the company plugin
+// The company plugin could then apply the artifactory plugin
+// Then a particular project would just say apply id: 'mycompPlugin' and then continue
+buildscript {
+  repositories {
+    mavenRepo urls: 'http://gradle.artifactoryonline.com/gradle/plugins-releases-local'
+  }
+  dependencies {
+    classpath 'org.gradle.artifactoryplugin:artifactoryplugin:0.1'
+  }
+}
+
+apply id: 'org.gradle.artifactoryplugin'
+apply id: 'java'
+
+dependencies {
+  testCompile "junit:junit:4.7"
+}
+
+task show << {
+  println configurations.testCompile.files
+}
+
